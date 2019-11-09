@@ -1,0 +1,1 @@
+rsync -acrvz  --delete --stats --progress  ./ root@dc.sevais.com:/opt/www/miningcity
