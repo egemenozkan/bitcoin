@@ -1,13 +1,13 @@
 <template>
     <div class="hello">
-        <h1>Mining City - Calculator</h1>
+        <h1>Bitcoin Mining ROI Calculator</h1>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="form-group">
                       <label for="tb-todayBtcUsd">BTC Today Value</label>
                       <input id="tb-todayBtcUsd" type="number" class="form-control" v-model="todayBtcUsd" placeholder="BTC/USD" />
-                      <small id="btcHelp" class="form-text text-muted"></small>
+                      <small id="btcHelp" class="form-text text-muted">Please, change BTC/USD rate how much will be worth end of the contract.</small>
                     </div>
 
                 </div>
@@ -251,7 +251,9 @@ export default {
                 miningOption.collection.netBTC = Number(miningOption.collection.netBTC.toFixed(8))
                 miningOption.collection.netUSD =   miningOption.collection.netBTC * self.todayBtcUsd;
                 miningOption.collection.netUSD = miningOption.collection.netUSD.toFixed(2);
-                miningOption.rateOfInvestment = ((miningOption.collection.netUSD / miningOption.cost.amount) * 100).toFixed(2);
+
+                /*https://www.quora.com/Whats-the-difference-between-ROR-Rate-of-Return-and-ROI-Return-on-Investment */
+                miningOption.rateOfInvestment = (((miningOption.collection.netUSD - miningOption.cost.amount)/miningOption.cost.amount) * 100).toFixed(2);
                 console.log(index, JSON.stringify(miningOption.collection));
             }
 
